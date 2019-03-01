@@ -1,0 +1,58 @@
+.category {
+    cursor: pointer;
+}
+
+.edit {
+    padding-top : 4px; 
+    position: absolute;
+    right: -17px;
+    top: -17px;
+}
+
+.edit .btn {
+    margin: 2px;
+    width: 35px;
+    height: 35px;
+    padding: 6px 0px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 1.42857;   
+}
+
+.row {
+display: flex;
+flex-wrap: wrap;
+}
+
+.row > div[class*='col-'] {
+display: flex;
+}
+
+.card {
+    width: 100%;
+}
+
+.card-title {
+    font-family: 'YellowSun';
+    font-size: 1.5em;
+}
+
+.category-container:hover{
+    transform: scale(1.06);
+}
+
+.category-container{
+    transition: transform .25s ease;
+}
+
+.card-img-top {
+    width: 100%;
+    padding: 15px;
+}
+
+.container > .title {
+    font-family: 'YellowSun';
+    margin-left: -65px;
+    font-size: 2.2em;
+    margin-top: 30px;
+}

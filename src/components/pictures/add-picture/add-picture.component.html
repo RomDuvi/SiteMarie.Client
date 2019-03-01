@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New picture</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container-fluid m-1">
+    <div class="p-2">
+      <h3>Import a new picture</h3>
+      <form [formGroup]="pictureForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="pictureName" placeholder="Enter Picture Name" formControlName="displayName"
+              [ngClass]="{ 'is-invalid': (submitted && f.displayName.errors) || error }" />
+            <div *ngIf="submitted && f.displayName.errors" class="invalid-feedback">
+              <div *ngIf="f.displayName.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="pictureDescription">Description</label>
+            <textarea class="form-control" id="pictureDescription" placeholder="Enter Picture Description"
+              formControlName="description" [ngClass]="{ 'is-invalid': (submitted && f.description.errors) || error }"></textarea>
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">Description is required</div>
+            </div>
+          </div>
+          <div class="form-group col-lg-4 col-sm-12">
+            <label for="pictureBinary">Picture</label>
+            <input type="file" class="form-control-file" id="pictureBinary" (change)="onFileChange($event)"
+              [ngClass]="{ 'is-invalid': (submitted && f.file.errors) || error }">
+            <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
+              <div *ngIf="f.file.errors.required">File is required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-4 col-sm-12">
+            <label for="pictureCategory">Category</label>
+            <ng-multiselect-dropdown [data]="dropDownCategories" formControlName="categories" [settings]="dropDownSettings"
+              (onSelect)="onCategorySelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="form-group col-md-4 col-sm-12">
+            <label for="picturePrice">Price</label>
+            <input type="number" class="form-control" id="picturePrice" placeholder="Enter Picture Price"
+              formControlName="price" [ngClass]="{ 'is-invalid': (submitted && f.price.errors) || error }"/>
+            <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+              <div *ngIf="f.price.errors.required">Price is required</div>
+            </div>
+          </div>          
+          <div class="form-group col-lg-12 col-sm-12 text-center" *ngIf="!submitted" >
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <p>
+        <ngb-progressbar type="info" [value]="progressValue">{{progressMessage}}</ngb-progressbar>
+      </p>
+    </div>
+  </div>
+</div>

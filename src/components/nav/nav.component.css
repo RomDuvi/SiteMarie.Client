@@ -1,0 +1,12 @@
+.nav-container h3{
+    font-family: 'Valentine';
+    font-size: 2.5em;
+    color: rgb(55, 197, 150);
+}
+
+.nav-container {
+    text-align: center;
+    /* background-color: rgb(55, 197, 150); */
+    background-color: rgb(243, 243, 243);
+    height: 180px;
+}

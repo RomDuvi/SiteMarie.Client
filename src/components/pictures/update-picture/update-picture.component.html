@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Update a picture</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngIf="!loading" >
+    <form [formGroup]="pictureForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-lg-4 col-sm-12">
+          <label>Name</label>
+          <input type="text" class="form-control" id="pictureDisplayName" placeholder="Name" formControlName="displayName" [ngClass]="{ 'is-invalid': (submitted && f.displayName.errors) || error }" />
+          <div *ngIf="submitted && f.displayName.errors" class="invalid-feedback">
+            <div *ngIf="f.displayName.errors.required">Name is required</div>
+          </div>
+        </div>
+        <div class="form-group col-lg-4 col-sm-12">
+          <label for="pictureDescription">Description</label>
+          <textarea class="form-control" id="pictureDescription" placeholder="Picture Description" formControlName="description"
+            [ngClass]="{ 'is-invalid': (submitted && f.description.errors) || error }"></textarea>
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description is required</div>
+          </div>
+        </div>
+        <div class="form-group col-lg-4 col-sm-12">
+          <label>Price</label>
+          <input type="number" class="form-control" id="picturePrice" placeholder="Price" formControlName="price" [ngClass]="{ 'is-invalid': (submitted && f.price.errors) || error }" />
+          <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+            <div *ngIf="f.price.errors.required">Price is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="loading" class="text-center">
+    <img src="../../../assets/loading.gif"/>
+  </div>
+</div>

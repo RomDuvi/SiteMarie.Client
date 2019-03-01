@@ -1,0 +1,84 @@
+.preview {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+.preview img{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.exit{
+    position: absolute;
+    top: 13px;
+    right: 13px;
+}
+
+.exit img{
+    padding:0;
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.exit img:hover{
+    cursor: pointer;
+}
+
+#display {
+    max-height: 800px;
+}
+
+#picture {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+#previous{
+    top:50%;
+    position: absolute;
+    max-width: 35px;
+    padding:0;
+    left: -40px;
+}
+
+#next{
+    top:50%;
+    position: absolute;
+    max-width: 35px;
+    padding:0;
+    right: -40px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.np-button:hover {
+    cursor: pointer;
+}
+
+.preview-container {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+    width:100%;
+}
+
+.main-container {
+    position: relative;
+    background-color: rgba(42, 46, 51, 0.836);
+}
+
+.info {
+    position: relative;
+    display: inline;
+    width: 100%;
+    font-family: 'Valentine';
+}
+
+.info h2 {
+    font-size: 2.5em;
+    margin-top: 35px;
+}

@@ -1,0 +1,25 @@
+<div class="container-fluid main-container p-5">
+  <div class="row justify-content-center">
+    <div class="row col-8 m-0 p-0">
+      <div class="d-flex preview-container">
+        <img src="../../assets/previous.png" id="previous" class="np-button" (click)="previous()">
+        <div id="picture" class="m-0 p-0" *ngIf="currentPicture.loaded">
+          <img [src]="currentPicture.src" alt="image" id="display" class="m-0 p-0">
+        </div>
+        <div *ngIf="!currentPicture.loaded">
+          <img src="../../assets/loading.gif">
+        </div>
+        <div class="info">
+          <div class="p-2 text-center">
+            <h2>{{currentPicture.displayName}}</h2>
+          </div>
+          <app-paypal *ngIf="currentPicture.loaded" [picture]="currentPicture"></app-paypal>
+        </div>
+        <img src="../../assets/previous.png" id="next" class="np-button" (click)="next()">
+      </div>
+    </div>
+  </div>
+  <div class="exit">
+    <img src="../../assets/close.png" (click)="close()" />
+  </div>
+</div>

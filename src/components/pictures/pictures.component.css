@@ -1,0 +1,43 @@
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 5;
+    }
+}
+
+.body{
+    min-height: 100%;
+}
+
+.main-container {
+    background-color: white;
+}
+.card{
+    transition: 0.2s;
+    margin-bottom : 25px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.container-fluid {
+    background-color:#b1e8d5;
+    padding-top: 25px;
+    padding-left: 35px; 
+}
