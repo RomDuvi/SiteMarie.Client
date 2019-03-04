@@ -6,6 +6,6 @@ import { AddCategoryComponent } from './add-category.component';
   imports: [
     CommonModule
   ],
-  declarations: [AddCategoryComponent]
+  // declarations: [AddCategoryComponent]
 })
 export class AddCategoryModule { }

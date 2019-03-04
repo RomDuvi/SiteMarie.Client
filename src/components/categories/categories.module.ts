@@ -6,6 +6,6 @@ import { CategoriesComponent } from './categories.component';
   imports: [
     CommonModule
   ],
-  declarations: [CategoriesComponent]
+  declarations: []
 })
 export class CategoriesModule { }

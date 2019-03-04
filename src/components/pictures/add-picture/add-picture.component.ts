@@ -110,7 +110,7 @@ export class AddPictureComponent implements OnInit {
       pictureCategories: this.pictureCategories
    });
   }
-  onCategoryAll(items: any) {
+  onSelectAll(items: any) {
     this.dropDownCategories.forEach(element => {
       const pictureCat = new PicturesCategories();
       pictureCat.categoryId = element.id;

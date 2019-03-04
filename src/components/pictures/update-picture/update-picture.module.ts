@@ -6,6 +6,6 @@ import { UpdatePictureComponent } from './update-picture.component';
   imports: [
     CommonModule
   ],
-  declarations: [UpdatePictureComponent]
+  // declarations: [UpdatePictureComponent]
 })
 export class UpdatePictureModule { }

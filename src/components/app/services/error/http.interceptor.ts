@@ -26,15 +26,15 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     private handleError(err: HttpErrorResponse) {
         switch (err.status) {
             case 400:
-                this.toast.toastError('Bad request', 'Something is invalid in the request');
+                this.toast.toastError('Bad request', err.message);
                 break;
             case 401:
                 break;
             case 500:
-                this.toast.toastError('Server error', 'Something wrong append on the server');
+                this.toast.toastError('Server error', err.message);
                 break;
             default:
-                this.toast.toastError('Error', 'An unexpected error occured!');
+                this.toast.toastError('Server error', err.message);
                 break;
 
         }
