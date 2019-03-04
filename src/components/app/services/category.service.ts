@@ -18,8 +18,20 @@ export class CategoryService extends ConfigService {
         return this.http.get<Category[]>(this.apiUrl, this.httpOptions);
     }
 
+    getCategoryById(id: string): Observable<Category> {
+        return this.http.get<Category>(this.apiUrl + '/' + id, this.httpOptions);
+    }
+
+    getCategoryFile(category: Category): Observable<string> {
+        return this.http.get<string>(this.apiUrl + '/file/' + category.id);
+    }
+
     addCategory(category: Category): Observable<Category> {
-        return this.http.post<Category>(this.apiUrl, category);
+        const formData = new FormData();
+        formData.append('file', category.file);
+        delete category.file;
+        formData.append('category', JSON.stringify(category));
+        return this.http.post<Category>(this.apiUrl, formData);
     }
 
     deleteCategory(category: Category): Observable<Category> {
@@ -27,6 +39,10 @@ export class CategoryService extends ConfigService {
     }
 
     updateCategory(category: Category): Observable<Category> {
-        return this.http.put<Category>(this.apiUrl, category, this.httpOptions);
+        const formData = new FormData();
+        formData.append('file', category.file);
+        delete category.file;
+        formData.append('category', JSON.stringify(category));
+        return this.http.put<Category>(this.apiUrl, formData);
     }
 }

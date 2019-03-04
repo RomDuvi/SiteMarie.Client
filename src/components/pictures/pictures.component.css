@@ -40,4 +40,10 @@
     background-color:#b1e8d5;
     padding-top: 25px;
     padding-left: 35px; 
+    height: 100%;
+}
+
+#empty-message {
+    font-family: 'YellowSun';
+    color: white;
 }

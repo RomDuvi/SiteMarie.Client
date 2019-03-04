@@ -6,6 +6,7 @@ import { AuthService } from '../app/services/guard/auth.service';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastGeneratorService } from '../app/services/toastGenerator.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-categories',
@@ -18,6 +19,7 @@ export class CategoriesComponent implements OnInit {
   isAdmin = false;
 
   constructor(
+    private sanitizer: DomSanitizer,
     protected categoryService: CategoryService,
     private router: Router,
     private auth: AuthService,
@@ -26,9 +28,16 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.categories = [];
     this.isAdmin = this.auth.isAdminLogged();
-    this.categoryService.getCategories().subscribe(data => {
-      this.categories = data;
+    this.categoryService.getCategories().subscribe((categories: Category[]) => {
+      categories.forEach(category => {
+        this.categoryService.getCategoryFile(category).subscribe(data => {
+          const src = this.sanitizer.bypassSecurityTrustResourceUrl(`data:${category.fileType};base64,${data}`);
+          category.src = src;
+          this.categories.push(category);
+        });
+      });
     });
   }
 

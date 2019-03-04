@@ -120,4 +120,4 @@ export class AddPictureComponent implements OnInit {
       pictureCategories: this.pictureCategories
     });
   }
-} 
+}

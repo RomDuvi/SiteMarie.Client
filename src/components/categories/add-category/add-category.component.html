@@ -23,6 +23,14 @@
             <div *ngIf="f.description.errors.required">Description is required</div>
           </div>
         </div>
+        <div class="form-group col-lg-4 col-sm-12">
+            <label for="categoryBinary">Category Picture</label>
+            <input type="file" class="form-control-file" id="categoryBinary" (change)="onFileChange($event)"
+              [ngClass]="{ 'is-invalid': (submitted && f.file.errors) || error }">
+            <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
+              <div *ngIf="f.file.errors.required">File is required</div>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-success">Save</button>

@@ -1,5 +1,10 @@
 <div class="container-fluid main-container">
-  <div class="card-columns">
+  <div id="empty-message" class="row">
+    <h1 *ngIf="!hasPictures">This category is empty...</h1>
+    <h1>{{category.name}}</h1>
+  </div>
+
+  <div class="card-columns" *ngIf="hasPictures">
     <div *ngIf="isAdmin">
       <div class="card border-info picture" (click)="open()">
         <div class="card-body text-info">

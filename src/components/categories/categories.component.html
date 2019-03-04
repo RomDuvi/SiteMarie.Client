@@ -9,7 +9,7 @@
             <button class="btn btn-danger" (click)="deleteCategory($event, i)"><fa-icon icon="trash"></fa-icon></button>
           </div>
         </div>
-        <img class="card-img-top" src="../../assets/square.png" alt="Card image cap">
+        <img class="card-img-top" [src]="category.src" alt="Card image cap">
         <div class="card-body">
           <p class="category-name card-title text-center">{{category.name}}</p>
         </div>

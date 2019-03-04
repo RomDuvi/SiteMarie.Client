@@ -130,6 +130,10 @@ export class PictureService extends ConfigService {
         return this.http.get(this.apiUrl + '/commands', this.httpOptions);
     }
 
+    public hasPicture(): boolean {
+        return this.dataStore.pictures.length > 0;
+    }
+
     private getEventMessage(event: HttpEvent<any>, fileName: string): any {
         switch (event.type) {
           case HttpEventType.Sent:

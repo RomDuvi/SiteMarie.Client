@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../app/services/category.service';
@@ -22,6 +22,7 @@ export class AddCategoryComponent implements OnInit {
     public modal: NgbActiveModal,
     private fb: FormBuilder,
     protected categoryService: CategoryService,
+    private cd: ChangeDetectorRef,
     private toast: ToastGeneratorService
   ) { }
 
@@ -29,17 +30,38 @@ export class AddCategoryComponent implements OnInit {
     if (this.category) {
       this.categoryForm = this.fb.group({
         name: [this.category.name, Validators.required],
-        description: [this.category.description, Validators.required]
+        description: [this.category.description, Validators.required],
+        file: [''],
+        fileType: ['']
       });
     } else {
       this.categoryForm = this.fb.group({
         name: ['', Validators.required],
-        description: ['', Validators.required]
+        description: ['', Validators.required],
+        file: [''],
+        fileType: ['']
       });
     }
   }
 
   get f() { return this.categoryForm.controls; }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsBinaryString(file);
+      reader.onload = () => {
+        this.categoryForm.patchValue({
+          file: <File>file,
+          fileType: file.type
+       });
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -51,6 +73,8 @@ export class AddCategoryComponent implements OnInit {
     if (this.category) {
       this.category.name = this.categoryForm.get('name').value;
       this.category.description = this.categoryForm.get('description').value;
+      this.category.file = this.categoryForm.get('file').value;
+      this.category.fileType = this.categoryForm.get('fileType').value;
       this.categoryService.updateCategory(this.category).subscribe(data => {
         this.loading = false;
         this.toast.toastSucess('Category updated', `The category ${data.name} has been updated`);
