@@ -1,8 +1,8 @@
 const config = require('../assets/config.json');
 
 export class PaypalConfig {
-    env = 'sandbox';
-    client = new Client(config.paypalProdClient, config.paypalSandboxClient);
+    env = config.paypalEnv;
+    client = new Client(config.paypalClient, config.paypalClient);
     commit = true;
     payment: any;
     onAuthorize: Function;

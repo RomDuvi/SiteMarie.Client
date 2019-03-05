@@ -7,7 +7,6 @@ import { ConfigService } from './config/config.service';
 import { map, tap, last } from 'rxjs/operators';
 import { ToastGeneratorService } from './toastGenerator.service';
 import saveAs from 'file-saver';
-import { Command } from 'src/models/command.model';
 
 @Injectable()
 export class PictureService extends ConfigService {
@@ -95,11 +94,14 @@ export class PictureService extends ConfigService {
 
     get pictures() { return this._pictures.asObservable(); }
 
-    deletePicture(picture: Picture) {
+    deletePicture(picture: Picture, callback?: any) {
         this.http.post(this.apiUrl + '/delete', picture, this.httpOptions).subscribe((data: Picture) => {
             const index = this.dataStore.pictures.indexOf(data);
             this.dataStore.pictures.splice(index, 1);
             this.toast.toastSucess('Picture deleted', `The picture ${data.displayName} has bean deleted`);
+            if (callback) {
+                callback();
+            }
         });
     }
 
@@ -118,16 +120,6 @@ export class PictureService extends ConfigService {
           }).subscribe((data) => {
             saveAs(data, params.picture.displayName + '.png');
         });
-    }
-
-    saveCommand(command: Command) {
-        this.http.post(this.apiUrl + '/commands', command, this.httpOptions).subscribe((data) => {
-            console.log('Command saved');
-        });
-    }
-
-    getCommands() {
-        return this.http.get(this.apiUrl + '/commands', this.httpOptions);
     }
 
     public hasPicture(): boolean {

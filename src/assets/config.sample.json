@@ -1,8 +1,9 @@
 {
-    "baseUrl": "http://localhost:8081/",
-    "pictureUrl": "pictures",
-    "userUrl": "users",
-    "categoryUrl": "categories",
-    "paypalProdClient":"AcvDKXMWeQ4L_VRdOFDfsqVnns4AdV725v_2XHgy0g7y1JRfu5jJ_Wbsrfw3RvC-AH54deEX2qM0-ewR",
-    "paypalSandboxClient": "AQG-ia9zjqTYgDZzm44g9g7ShRNUfOloc-3MZhiYPxQu6e1HxEplNCPX9s0lxW7ASyDKdb8FQoXPCZ2a"
+    "baseUrl": "http://localhost:5000/api/",
+    "pictureUrl": "picture",
+    "userUrl": "user",
+    "categoryUrl": "category",
+    "commandUrl": "command",
+    "paypalClient": "AZHCsGcwnc073J5n313bfg9ryGRERC6c9SxJH5XfetntwxVors4uEVg-RRX-GfoXUEBvLf8iDosk_9g_",
+    "paypalEnv": "sandbox"
 }

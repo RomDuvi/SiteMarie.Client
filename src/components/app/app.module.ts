@@ -7,20 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { NavModule } from '../nav/nav.module';
-import { BodyComponent } from '../body/body.component';
-import { BodyModule } from '../body/body.module';
-import { NavComponent } from '../nav/nav.component';
-import { CardComponent } from '../card/card.component';
-import { PreviewComponent } from '../preview/preview.component';
-import { AddPictureComponent } from '../pictures/add-picture/add-picture.component';
-import { FooterComponent } from '../footer/footer.component';
-import { AdminComponent } from '../admin/admin.component';
-import { LoginComponent } from '../login/login.component';
-import { CategoriesComponent } from '../categories/categories.component';
-import { PicturesComponent } from '../pictures/pictures.component';
-import { AddCategoryComponent } from '../categories/add-category/add-category.component';
-import { UpdatePictureComponent } from '../pictures/update-picture/update-picture.component';
+import { NavModule } from './nav/nav.module';
+import { BodyComponent } from './body/body.component';
+import { BodyModule } from './body/body.module';
+import { NavComponent } from './nav/nav.component';
+import { CardComponent } from './card/card.component';
+import { PreviewComponent } from './preview/preview.component';
+import { AddPictureComponent } from './pictures/add-picture/add-picture.component';
+import { FooterComponent } from './footer/footer.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { PicturesComponent } from './pictures/pictures.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { UpdatePictureComponent } from './pictures/update-picture/update-picture.component';
+import { PaypalComponent } from './paypal/paypal.component';
 
 import { AuthGuard } from './services/guard/authGuard';
 import { AuthService } from './services/guard/auth.service';
@@ -34,7 +35,7 @@ import { faTrash, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { ToastrModule } from 'ngx-toastr';
-import { PaypalComponent } from '../paypal/paypal.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 
 
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
     PicturesComponent,
     AddCategoryComponent,
     UpdatePictureComponent,
-    PaypalComponent
+    PaypalComponent,
+    DeleteModalComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -88,7 +90,8 @@ const appRoutes: Routes = [
   entryComponents: [
     AddCategoryComponent,
     UpdatePictureComponent,
-    AddPictureComponent
+    AddPictureComponent,
+    DeleteModalComponent
   ],
   providers: [
     AuthGuard,

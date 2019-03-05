@@ -3,4 +3,7 @@ export class Config {
     pictureUrl: string;
     userUrl: string;
     categoryUrl: string;
+    commandUrl: string;
+    paypalEnv: string;
+    paypalClient: string;
   }
