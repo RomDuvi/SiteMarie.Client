@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { Config } from '../../../../models/config.model';
-const config = require('../../../../assets/config.json');
-
-
+import { config } from '../../../../environments/environment';
 @Injectable()
 export class ConfigService {
   httpOptions = {
