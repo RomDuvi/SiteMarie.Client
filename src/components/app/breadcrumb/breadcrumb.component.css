@@ -1,0 +1,23 @@
+.container {
+    margin-top: 10px;
+}
+
+#crumbs .crumb div {
+	float: left;
+    height: 50px;
+    padding-top: 10px; 
+	text-align: center;	
+	font-size: 25px;
+	text-decoration: none;
+    color: #fff;
+    font-family: 'YellowSun';
+    cursor: pointer;
+}
+
+.chevron {
+    display: block;
+    float:left;
+    color: white;
+    font-size: 20px;
+    margin: 12px 7px 0px 7px; 
+}

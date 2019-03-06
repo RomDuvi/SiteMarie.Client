@@ -8,13 +8,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddPictureComponent } from './add-picture/add-picture.component';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../../../models/category.model';
+import { BaseComponent } from '../base-component/base-component.component';
+import { BreadCrumbElement } from '../../../models/breadcrumbElement.model';
 
 @Component({
   selector: 'app-pictures',
   templateUrl: './pictures.component.html',
   styleUrls: ['./pictures.component.css']
 })
-export class PicturesComponent implements OnInit {
+export class PicturesComponent extends BaseComponent implements OnInit {
   pictures: Observable<Picture[]>;
   isAdmin = false;
   currentCategory: string;
@@ -28,7 +30,10 @@ export class PicturesComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: NgbModal,
     protected categoryService: CategoryService
-  ) { }
+  ) {
+    super();
+    this.addInBreadcrumb(new BreadCrumbElement('Categories', 'categories'));
+  }
 
   ngOnInit() {
     this.isAdmin = this.authService.isAdminLogged();
@@ -36,6 +41,7 @@ export class PicturesComponent implements OnInit {
       this.currentCategory = params.categoryId;
       this.categoryService.getCategoryById(this.currentCategory).subscribe(data => {
         this.category = data;
+        this.addInBreadcrumb(new BreadCrumbElement(this.category.name, ''));
         this.pictures = this.pictureService.pictures;
         this.pictureService.getPictures(() => {
           this.pictureService.getPicturesByCategory(this.currentCategory);

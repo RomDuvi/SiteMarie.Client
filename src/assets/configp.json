@@ -1,0 +1,9 @@
+{
+    "baseUrl": "https://rizdelhuilde.com/api/",
+    "pictureUrl": "picture",
+    "userUrl": "user",
+    "categoryUrl": "category",
+    "commandUrl": "command",
+    "paypalClient": "AdWZkAib8zRVALJCCr5Pj6kPBr6O_KZZnw9NzCxcZEyS6A6grsu4zhag895cst0bX7vSNs41yWBGJJJ0",
+    "paypalEnv": "production"
+}

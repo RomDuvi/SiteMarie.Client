@@ -1,0 +1,8 @@
+<div class="container">
+  <div id="crumbs">
+      <div *ngFor="let element of breadcrumb ; index as i;" class="crumb">
+        <div (click)="navigate(element.link)">{{element.name}}</div>
+        <fa-icon class="chevron" icon="chevron-right" *ngIf="!isLast(i)" ></fa-icon>
+      </div>
+  </div>
+</div>

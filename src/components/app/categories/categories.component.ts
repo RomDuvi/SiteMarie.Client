@@ -8,13 +8,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastGeneratorService } from '../services/toastGenerator.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { BaseComponent } from '../base-component/base-component.component';
+import { BreadCrumbElement } from '../../../models/breadcrumbElement.model';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent extends BaseComponent implements OnInit {
   @ViewChild(AddCategoryComponent) addCategory: AddCategoryComponent;
   categories: Category[];
   isAdmin = false;
@@ -27,7 +29,10 @@ export class CategoriesComponent implements OnInit {
     private auth: AuthService,
     private modalService: NgbModal,
     private toast: ToastGeneratorService
-  ) { }
+  ) {
+    super();
+    this.addInBreadcrumb(new BreadCrumbElement('Categories', '/categories'));
+  }
 
   ngOnInit() {
     this.loading = true;

@@ -31,11 +31,13 @@ import { ToastGeneratorService } from './services/toastGenerator.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencilAlt, faPlusCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { ToastrModule } from 'ngx-toastr';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { BaseComponent } from './base-component/base-component.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 
@@ -64,7 +66,9 @@ const appRoutes: Routes = [
     AddCategoryComponent,
     UpdatePictureComponent,
     PaypalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    BaseComponent,
+    BreadcrumbComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -108,6 +112,6 @@ const appRoutes: Routes = [
 })
 export class AppModule {
   constructor() {
-    library.add(faTrash, faPencilAlt, faPlusCircle);
+    library.add(faTrash, faPencilAlt, faPlusCircle, faChevronRight);
   }
 }
